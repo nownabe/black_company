@@ -32,6 +32,7 @@ module BlackCompany
     alias_method :size, :count
 
     def fire(count)
+      count = [count, self.count].max
       count.times { @queue.push(Event.new(:terminate, @fired_queue)) }
       fired_count = 0
       while fired_count != count
