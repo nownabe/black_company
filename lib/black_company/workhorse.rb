@@ -1,10 +1,13 @@
 module BlackCompany
   class Workhorse
-    def initialize(queue, exeption_handlers: [])
+    attr_reader :options
+
+    def initialize(queue, exeption_handlers: [], options: {})
       @queue = queue
       @active = true
       @thread = Thread.new { work }
       @exeption_handlers = [*exeption_handlers]
+      @options = options
     end
 
     def alive?

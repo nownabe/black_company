@@ -6,19 +6,21 @@ module BlackCompany
   class Pool
     DEFAULT_POOL_SIZE = 20
 
-    attr_reader :workhorse_class, :exeption_handlers
+    attr_reader :workhorse_class, :exeption_handlers, :options
 
     def initialize(
       pool_size: DEFAULT_POOL_SIZE,
       queue_size: nil,
       workhorse_class: Workhorse,
-      exeption_handlers: []
+      exeption_handlers: [],
+      options: {}
     )
 
       @queue = queue_size ? SizedQueue.new(queue_size) : Queue.new
       @fired_queue = Queue.new
       @workhorse_class = workhorse_class
       @exeption_handlers = exeption_handlers
+      @options = options
 
       @workhorses = []
       hire(pool_size)
@@ -78,7 +80,7 @@ module BlackCompany
     private
 
     def hire_one
-      workhorse_class.new(@queue, exeption_handlers: exeption_handlers)
+      workhorse_class.new(@queue, exeption_handlers: exeption_handlers, options: options)
     end
   end
 end
