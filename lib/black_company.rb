@@ -1,5 +1,8 @@
+require "black_company/pool"
 require "black_company/version"
 
 module BlackCompany
-  # Your code goes here...
+  def self.start(*args)
+    Pool.new(*args)
+  end
 end

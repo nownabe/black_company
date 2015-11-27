@@ -1,8 +1,5 @@
 # BlackCompany
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/black_company`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+BlackCompany provides workhorses. But there is a limit to the number of them. So it's a thread pool :yum:
 
 ## Installation
 
@@ -22,7 +19,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`require "black_company"`
+
+Simple usage:
+
+```ruby
+black_company = BlackCompany.start
+100.times do |i|
+  black_company.receive(i) do |i|
+    puts "This is the #{i}th task..."
+  end
+end
+```
+
+You can use your original workhorse:
+
+```ruby
+class MyWorkhorse < BlackCompany::Workhorse
+  def serve(task_content)
+    puts "This is the #{task_content}th task..."
+  end
+end
+
+black_company = BlackCompany.start(workhorse_class: MyWorkhorse)
+100.times do |task_content|
+  black_company.receive(task_content)
+end
+```
 
 ## Development
 

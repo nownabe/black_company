@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["nownabe"]
   spec.email         = ["nownabe@gmail.com"]
 
-  spec.summary       = %q{BlackCompany provides some workhorses. But there is a limit to the number of them. So it's a thread pool :yum:}
+  spec.summary       = %q{BlackCompany provides workhorses. But there is a limit to the number of them. So it's a thread pool :yum:}
   spec.homepage      = "https://github.com/nownabe/black_company"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
