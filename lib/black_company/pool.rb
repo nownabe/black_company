@@ -41,14 +41,14 @@ module BlackCompany
         fired_count += 1
       end
 
-      true
+      count
     end
 
     def hire(count)
       workhorses = Array.new(count) { hire_one }
       @workhorses.concat(workhorses)
 
-      true
+      count
     end
 
     def inspect
@@ -62,11 +62,13 @@ module BlackCompany
       @exeption_handlers << block
       @workhorses.each { |w| w.on_exeption(&block) }
 
-      true
+      nil
     end
 
     def receive(task_content = nil, &block)
       @queue.push(Event.new(:perform, Task.new(task_content, &block)))
+
+      nil
     end
 
     def queued_tasks_size
