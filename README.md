@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/black_company.svg)](https://badge.fury.io/rb/black_company)
 [![Code Climate](https://codeclimate.com/github/nownabe/black_company/badges/gpa.svg)](https://codeclimate.com/github/nownabe/black_company)
+[![Build Status](https://travis-ci.org/nownabe/black_company.svg?branch=master)](https://travis-ci.org/nownabe/black_company)
 
 BlackCompany provides workhorses. But there is a limit to the number of them. So it's a thread pool :yum:
 
